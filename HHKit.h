@@ -9,3 +9,4 @@
 #import "UIView+HHKit.h"
 #import "HHAlertView.h"
 #import "HHActionSheet.h"
+#import "UILabel+HHKit.h"
