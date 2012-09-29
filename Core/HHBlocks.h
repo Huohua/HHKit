@@ -1,9 +1,8 @@
 // light@huohua.tv
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
-#if NS_BLOCKS_AVAILABLE
-    typedef void (^HHBasicBlock)(void);
-    typedef void (^HHIterationBlock)(int number);
-    typedef void (^HHObserverBlock)(NSDictionary * change);
-    typedef void (^HHErrorBLock)(NSError * error);
-#endif
+typedef void (^HHBasicBlock)(void);
+typedef void (^HHIterationBlock)(int number);
+typedef void (^HHObserverBlock)(NSDictionary * change);
+typedef void (^HHErrorBLock)(NSError * error);
+typedef UIViewController *(^HHViewControllerBlock)();
