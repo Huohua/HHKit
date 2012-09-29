@@ -8,4 +8,9 @@
 @property (assign, nonatomic) CGFloat height;
 @property (readonly) CGFloat right;
 @property (readonly) CGFloat bottom;
+
+- (void)show;
+- (void)hide;
+- (void)fadeInWithDuration:(NSTimeInterval)duration;
+- (void)fadeOutWithDuration:(NSTimeInterval)duration;
 @end

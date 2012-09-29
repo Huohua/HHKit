@@ -2,6 +2,7 @@
 #import "UIView+HHKit.h"
 
 @implementation UIView (HHKit)
+
 - (CGFloat)offsetX
 {
     return self.frame.origin.x;
@@ -50,6 +51,30 @@
 - (CGFloat)bottom
 {
     return self.offsetY + self.height;
+}
+
+- (void)show
+{
+    self.alpha = 1;
+}
+
+- (void)hide
+{
+    self.alpha = 0;
+}
+
+- (void)fadeInWithDuration:(NSTimeInterval)duration
+{
+    [UIView animateWithDuration:duration animations:^{
+        self.alpha = 1;
+    }];
+}
+
+- (void)fadeOutWithDuration:(NSTimeInterval)duration
+{
+    [UIView animateWithDuration:duration animations:^{
+        self.alpha = 0;
+    }];
 }
 
 @end
