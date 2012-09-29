@@ -42,4 +42,14 @@
     self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, height);
 }
 
+- (CGFloat)right
+{
+    return self.offsetX + self.width;
+}
+
+- (CGFloat)bottom
+{
+    return self.offsetY + self.height;
+}
+
 @end

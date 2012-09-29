@@ -6,4 +6,6 @@
 @property (assign, nonatomic) CGFloat offsetY;
 @property (assign, nonatomic) CGFloat width;
 @property (assign, nonatomic) CGFloat height;
+@property (readonly) CGFloat right;
+@property (readonly) CGFloat bottom;
 @end
