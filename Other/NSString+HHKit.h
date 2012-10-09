@@ -2,5 +2,6 @@
 #import <Foundation/Foundation.h>
 
 @interface NSString (HHKit)
-- (NSString *)md5;
+@property (readonly) NSString *trim;
+@property (readonly) NSString *md5;
 @end

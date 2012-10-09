@@ -4,6 +4,12 @@
 
 @implementation NSString (HHKit)
 
+- (NSString *)trim
+{
+    NSCharacterSet *set = [NSCharacterSet whitespaceCharacterSet];
+    return [self stringByTrimmingCharactersInSet:set];
+}
+
 - (NSString *)md5
 {
     const char      *concat_str = [self UTF8String];
