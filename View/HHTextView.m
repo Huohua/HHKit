@@ -39,6 +39,12 @@
     }
 }
 
+- (void)setText:(NSString *)text
+{
+    [super setText:text];
+    [[NSNotificationCenter defaultCenter] postNotificationName:UITextViewTextDidChangeNotification object:nil];
+}
+
 - (void)textViewDidChange:(UITextView *)textView
 {
     NSString *content = [self text];
