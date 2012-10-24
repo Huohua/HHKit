@@ -3,6 +3,26 @@
 
 @implementation UIView (HHKit)
 
+- (CGPoint)offset
+{
+    return CGPointMake(self.offsetX, self.offsetY);
+}
+
+- (void)setOffset:(CGPoint)offset
+{
+    self.frame = CGRectMake(offset.x, offset.y, self.width, self.height);
+}
+
+- (CGSize)size
+{
+    return CGSizeMake(self.width, self.height);
+}
+
+- (void)setSize:(CGSize)size
+{
+    self.frame = CGRectMake(self.offsetX, self.offsetY, size.width, size.height);
+}
+
 - (CGFloat)offsetX
 {
     return self.frame.origin.x;
@@ -10,7 +30,7 @@
 
 - (void)setOffsetX:(CGFloat)offsetX
 {
-    self.frame = CGRectMake(offsetX, self.frame.origin.y, self.frame.size.width, self.frame.size.height);
+    self.frame = CGRectMake(offsetX, self.offsetY, self.width, self.height);
 }
 
 - (CGFloat)offsetY
@@ -20,7 +40,7 @@
 
 - (void)setOffsetY:(CGFloat)offsetY
 {
-    self.frame = CGRectMake(self.frame.origin.x, offsetY, self.frame.size.width, self.frame.size.height);
+    self.frame = CGRectMake(self.offsetX, offsetY, self.width, self.height);
 }
 
 - (CGFloat)width
@@ -30,7 +50,7 @@
 
 - (void)setWidth:(CGFloat)width
 {
-    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, width, self.frame.size.height);
+    self.frame = CGRectMake(self.offsetX, self.offsetY, width, self.height);
 }
 
 - (CGFloat)height
@@ -40,7 +60,7 @@
 
 - (void)setHeight:(CGFloat)height
 {
-    self.frame = CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, height);
+    self.frame = CGRectMake(self.offsetX, self.offsetY, self.width, height);
 }
 
 - (CGFloat)right
@@ -53,6 +73,8 @@
     return self.offsetY + self.height;
 }
 
+
+#pragma mark - Alpa
 - (void)show
 {
     self.alpha = 1;
@@ -63,6 +85,7 @@
     self.alpha = 0;
 }
 
+#pragma mark - Animation
 - (void)fadeInWithDuration:(NSTimeInterval)duration
 {
     [UIView animateWithDuration:duration animations:^{
