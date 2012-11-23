@@ -45,9 +45,4 @@
     block();
 }
 
-- (void)showInView:(UIView *)view
-{
-    [super showInView:view];
-}
-
 @end
