@@ -26,12 +26,6 @@
     return self;
 }
 
-- (void)addButtonCancel
-{
-    [self addButtonWithTitle:@"取消" block:^(void) {}];
-    self.cancelButtonIndex = self.numberOfButtons - 1;
-}
-
 - (void)addButtonWithTitle:(NSString *)title block:(HHBasicBlock)block
 {
     [self addButtonWithTitle:title];
@@ -51,16 +45,8 @@
     block();
 }
 
-- (void)actionSheetCancel:(HHActionSheet *)actionSheet
-{
-    HHBasicBlock block = [self.blocks objectAtIndex:0];
-
-    block();
-}
-
 - (void)showInView:(UIView *)view
 {
-    [self addButtonCancel];
     [super showInView:view];
 }
 
