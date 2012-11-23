@@ -47,6 +47,13 @@
     [self performBlockInBackground:nil completion:block waitUntilDone:waitUntilDone];
 }
 
++ (void)performBlockInMainThread:(HHBasicBlock)block afterDelay:(NSTimeInterval)delay
+{
+    [self performBlockInBackground:^{
+        sleep(delay);
+    } completion:block];
+}
+
 + (void)performBlockInMainThread:(HHBasicBlock)block
 {
     [self performBlockInMainThread:block waitUntilDone:NO];
