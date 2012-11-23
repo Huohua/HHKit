@@ -26,16 +26,23 @@
     return self;
 }
 
-- (void)addButtonWithTitle:(NSString *)title block:(HHBasicBlock)block
+- (NSInteger)addButtonWithTitle:(NSString *)title
 {
-    [self addButtonWithTitle:title];
-    [self.blocks addObject:[block copy]];
+    return [self addButtonWithTitle:title block:^{}];
 }
 
-- (void)addDestructiveButtonWithTitle:(NSString *)title block:(HHBasicBlock)block
+- (NSInteger)addButtonWithTitle:(NSString *)title block:(HHBasicBlock)block
 {
-    [self addButtonWithTitle:title block:block];
+    [self.blocks addObject:[block copy]];
+    return [super addButtonWithTitle:title];
+}
+
+- (NSInteger)addDestructiveButtonWithTitle:(NSString *)title block:(HHBasicBlock)block
+{
+    NSInteger index = [self addButtonWithTitle:title block:block];
     self.destructiveButtonIndex = self.numberOfButtons - 1;
+    
+    return index;
 }
 
 - (void)actionSheet:(HHActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
