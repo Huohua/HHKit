@@ -4,6 +4,6 @@
 
 @interface HHActionSheet : UIActionSheet
 - (id)initWithTitle:(NSString *)title;
-- (void)addButtonWithTitle:(NSString *)title block:(HHBasicBlock)block;
-- (void)addDestructiveButtonWithTitle:(NSString *)title block:(HHBasicBlock)block;
+- (NSInteger)addButtonWithTitle:(NSString *)title block:(HHBasicBlock)block;
+- (NSInteger)addDestructiveButtonWithTitle:(NSString *)title block:(HHBasicBlock)block;
 @end

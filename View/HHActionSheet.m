@@ -26,22 +26,23 @@
     return self;
 }
 
-- (void)addButtonCancel
+- (NSInteger)addButtonWithTitle:(NSString *)title
 {
-    [self addButtonWithTitle:@"取消" block:^(void) {}];
-    self.cancelButtonIndex = self.numberOfButtons - 1;
+    return [self addButtonWithTitle:title block:^{}];
 }
 
-- (void)addButtonWithTitle:(NSString *)title block:(HHBasicBlock)block
+- (NSInteger)addButtonWithTitle:(NSString *)title block:(HHBasicBlock)block
 {
-    [self addButtonWithTitle:title];
     [self.blocks addObject:[block copy]];
+    return [super addButtonWithTitle:title];
 }
 
-- (void)addDestructiveButtonWithTitle:(NSString *)title block:(HHBasicBlock)block
+- (NSInteger)addDestructiveButtonWithTitle:(NSString *)title block:(HHBasicBlock)block
 {
-    [self addButtonWithTitle:title block:block];
+    NSInteger index = [self addButtonWithTitle:title block:block];
     self.destructiveButtonIndex = self.numberOfButtons - 1;
+    
+    return index;
 }
 
 - (void)actionSheet:(HHActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -49,19 +50,6 @@
     HHBasicBlock block = [self.blocks objectAtIndex:buttonIndex];
 
     block();
-}
-
-- (void)actionSheetCancel:(HHActionSheet *)actionSheet
-{
-    HHBasicBlock block = [self.blocks objectAtIndex:0];
-
-    block();
-}
-
-- (void)showInView:(UIView *)view
-{
-    [self addButtonCancel];
-    [super showInView:view];
 }
 
 @end
