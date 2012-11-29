@@ -16,8 +16,10 @@
 
 - (void)replaceVisibleViewController:(UIViewController *)viewController animated:(BOOL)animated
 {
+    [self pushViewController:viewController animated:animated];
+    
     NSMutableArray *VCs = [self.viewControllers mutableCopy];
-    [VCs replaceObjectAtIndex:[VCs count]-1 withObject:viewController];
+    [VCs removeObjectAtIndex:VCs.count - 2];
     [self setViewControllers:VCs animated:animated];
 }
 
