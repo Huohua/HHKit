@@ -45,6 +45,12 @@
     return index;
 }
 
+- (void)addCancelButtonWithTitle:(NSString *)title
+{
+    [self addButtonWithTitle:@"取消" block:^(void) {}];
+    self.cancelButtonIndex = self.numberOfButtons - 1;
+}
+
 - (void)actionSheet:(HHActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     HHBasicBlock block = [self.blocks objectAtIndex:buttonIndex];
