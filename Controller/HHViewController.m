@@ -6,7 +6,10 @@
 {
     if ([self respondsToSelector:@selector(hooksAfterLoadView)]) {
         for (NSString *selString in [self hooksAfterLoadView]) {
+            #pragma clang diagnostic push
+            #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
             [self performSelector:NSSelectorFromString(selString)];
+            #pragma clang diagnostic pop
         }
     }
 }
@@ -15,7 +18,10 @@
 {
     if ([self respondsToSelector:@selector(hooksBeforeViewDidUnload)]) {
         for (NSString *selString in [self hooksBeforeViewDidUnload]) {
+            #pragma clang diagnostic push
+            #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
             [self performSelector:NSSelectorFromString(selString)];
+            #pragma clang diagnostic pop
         }
     }
     
@@ -28,7 +34,10 @@
     
     if ([self respondsToSelector:@selector(hooksAfterViewDidAppear)]) {
         for (NSString *selString in [self hooksAfterViewDidAppear]) {
+            #pragma clang diagnostic push
+            #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
             [self performSelector:NSSelectorFromString(selString)];
+            #pragma clang diagnostic pop
         }
     }
 }
@@ -39,7 +48,10 @@
     
     if ([self respondsToSelector:@selector(hooksAfterViewDidDisappear)]) {
         for (NSString *selString in [self hooksAfterViewDidDisappear]) {
+            #pragma clang diagnostic push
+            #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
             [self performSelector:NSSelectorFromString(selString)];
+            #pragma clang diagnostic pop
         }
     }
 }
