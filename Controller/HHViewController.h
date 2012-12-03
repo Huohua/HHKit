@@ -3,14 +3,14 @@
 #import "HHBlocks.h"
 
 @protocol UIViewControllerHooksDelegate <NSObject>
-@optional - (NSArray *)hooksBeforeViewDidUnload;
 @optional - (NSArray *)hooksAfterLoadView;
+@optional - (NSArray *)hooksBeforeViewDidUnload;
+@optional - (NSArray *)hooksAfterViewDidAppear;
+@optional - (NSArray *)hooksAfterViewDidDisappear;
 @end
-
 
 @interface HHViewController : UIViewController <UIViewControllerHooksDelegate>
 @end
-
 
 @interface UIViewController (ModallyPresent)
 - (void)presentModalViewControllerWithBlock:(HHViewControllerBlock)viewController animated:(BOOL)animated;
