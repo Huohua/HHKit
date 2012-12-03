@@ -14,5 +14,5 @@
 #import "HHLabel.h"
 #import "HHTextView.h"
 
-#import "UIViewController+HHKit.h"
+#import "HHViewController.h"
 #import "UINavigationController+HHKit.h"
