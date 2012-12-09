@@ -47,7 +47,7 @@
 
 - (void)addCancelButtonWithTitle:(NSString *)title
 {
-    [self addButtonWithTitle:@"取消" block:^(void) {}];
+    [self addButtonWithTitle:title block:^(void) {}];
     self.cancelButtonIndex = self.numberOfButtons - 1;
 }
 
