@@ -10,8 +10,9 @@
 - (void)setPlaceholder:(NSString *)placeholder
 {
     CGSize textSize = [placeholder sizeWithFont:self.font forWidth:self.frame.size.width lineBreakMode:UILineBreakModeClip];
-    
-    self.placeholderLabel = [[UILabel alloc] init];
+    if (!self.placeholderLabel) {
+        self.placeholderLabel = [[UILabel alloc] init];
+    }
     self.placeholderLabel.font = self.font;
     self.placeholderLabel.text = placeholder;
     self.placeholderLabel.textColor = [UIColor grayColor];
