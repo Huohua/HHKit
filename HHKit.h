@@ -4,6 +4,7 @@
 #import "HHDebugHelper.h"
 #import "HHThreadHelper.h"
 
+#import "NSObject+HHKit.h"
 #import "NSString+HHKit.h"
 
 #import "UIImage+HHKit.h"
