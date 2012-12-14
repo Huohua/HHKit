@@ -25,4 +25,10 @@
     return [hash lowercaseString];
 }
 
+- (NSString *)stringByUppercaseFirstLetter
+{
+    NSString *firstLetter = [self substringToIndex:1];
+    return [self stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:[firstLetter uppercaseString]];
+}
+
 @end

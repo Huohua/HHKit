@@ -4,4 +4,6 @@
 @interface NSString (HHKit)
 @property (readonly) NSString *trim;
 @property (readonly) NSString *md5;
+
+- (NSString *)stringByUppercaseFirstLetter;
 @end
