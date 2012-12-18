@@ -6,4 +6,7 @@
 @property (readonly) NSString *md5;
 
 - (NSString *)stringByUppercaseFirstLetter;
+
+- (NSString *)stringByEncodeURIComponent;
+- (NSString *)stringByDecodeURIComponent;
 @end

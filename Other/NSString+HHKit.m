@@ -31,4 +31,24 @@
     return [self stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:[firstLetter uppercaseString]];
 }
 
+- (NSString *)stringByEncodeURIComponent
+{
+    NSString *s = [self copy];
+    s = [s stringByReplacingOccurrencesOfString:@"?" withString:@"%3F" options:NSCaseInsensitiveSearch range:NSMakeRange(0, s.length)];
+    s = [s stringByReplacingOccurrencesOfString:@"=" withString:@"%3D" options:NSCaseInsensitiveSearch range:NSMakeRange(0, s.length)];
+    s = [s stringByReplacingOccurrencesOfString:@":" withString:@"%3A" options:NSCaseInsensitiveSearch range:NSMakeRange(0, s.length)];
+    s = [s stringByReplacingOccurrencesOfString:@"/" withString:@"%2F" options:NSCaseInsensitiveSearch range:NSMakeRange(0, s.length)];
+    return s;
+}
+
+- (NSString *)stringByDecodeURIComponent
+{
+    NSString *s = [self copy];
+    s = [s stringByReplacingOccurrencesOfString:@"%3F" withString:@"?" options:NSCaseInsensitiveSearch range:NSMakeRange(0, s.length)];
+    s = [s stringByReplacingOccurrencesOfString:@"%3D" withString:@"=" options:NSCaseInsensitiveSearch range:NSMakeRange(0, s.length)];
+    s = [s stringByReplacingOccurrencesOfString:@"%3A" withString:@":" options:NSCaseInsensitiveSearch range:NSMakeRange(0, s.length)];
+    s = [s stringByReplacingOccurrencesOfString:@"%2F" withString:@"/" options:NSCaseInsensitiveSearch range:NSMakeRange(0, s.length)];
+    return s;
+}
+
 @end
