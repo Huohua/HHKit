@@ -47,7 +47,12 @@
 
 - (void)addCancelButtonWithTitle:(NSString *)title
 {
-    [self addButtonWithTitle:title block:^(void) {}];
+    [self addCancelButtonWithTitle:title block:^{}];
+}
+
+- (void)addCancelButtonWithTitle:(NSString *)title block:(HHBasicBlock)block
+{
+    [self addButtonWithTitle:title block:block];
     self.cancelButtonIndex = self.numberOfButtons - 1;
 }
 
