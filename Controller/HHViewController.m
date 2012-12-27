@@ -28,6 +28,20 @@
     [super viewDidUnload];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if ([self respondsToSelector:@selector(hooksAfterViewWillAppear)]) {
+        for (NSString *selString in [self hooksAfterViewWillAppear]) {
+            #pragma clang diagnostic push
+            #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+            [self performSelector:NSSelectorFromString(selString)];
+            #pragma clang diagnostic pop
+        }
+    }
+}
+
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];

@@ -5,6 +5,7 @@
 @protocol UIViewControllerHooksDelegate <NSObject>
 @optional - (NSArray *)hooksAfterLoadView;
 @optional - (NSArray *)hooksBeforeViewDidUnload;
+@optional - (NSArray *)hooksAfterViewWillAppear;
 @optional - (NSArray *)hooksAfterViewDidAppear;
 @optional - (NSArray *)hooksAfterViewDidDisappear;
 @end
