@@ -2,6 +2,20 @@
 #import "HHViewController.h"
 
 @implementation HHViewController
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 6.0) {
+        //  We check the window property to make sure that the view is not visible
+        if (self.isViewLoaded && self.view.window == nil) {
+            [self.view removeFromSuperview]; //  Detach it from its parent (in cases of view controller containment)
+            self.view = nil;
+            [self performSelectorOnMainThread:@selector(viewDidUnload) withObject:nil waitUntilDone:YES];
+        }
+    }
+}
+
 - (void)loadView
 {
     if ([self respondsToSelector:@selector(hooksAfterLoadView)]) {
