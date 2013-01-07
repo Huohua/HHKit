@@ -1,6 +1,9 @@
 // light@huohua.tv
 #import <UIKit/UIKit.h>
 
-@interface HHLabel : UILabel
+@interface UILabel (HHKit)
 - (void)autoResize:(CGSize)maxSize;
+@end
+
+@interface HHLabel : UILabel
 @end
