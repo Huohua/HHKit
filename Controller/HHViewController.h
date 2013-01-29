@@ -7,6 +7,7 @@
 @optional - (NSArray *)hooksBeforeViewDidUnload;
 @optional - (NSArray *)hooksAfterViewWillAppear;
 @optional - (NSArray *)hooksAfterViewDidAppear;
+@optional - (NSArray *)hooksAfterViewWillDisappear;
 @optional - (NSArray *)hooksAfterViewDidDisappear;
 @end
 
