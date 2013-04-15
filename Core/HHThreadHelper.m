@@ -22,14 +22,12 @@
         });
     } else {
         dispatch_async(concurrentQueue, ^{
-                operation();
-                dispatch_async(mainQueue, ^{
-                    completion();
-                });
+            operation();
+            dispatch_async(mainQueue, ^{
+                completion();
             });
+        });
     }
-
-    dispatch_release(concurrentQueue);
 }
 
 + (void)performBlockInBackground:(HHBasicBlock)block completion:(HHBasicBlock)completionBlock
