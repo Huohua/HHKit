@@ -57,4 +57,9 @@
     }
 }
 
+- (void)deleteBackward
+{
+    [super deleteBackward];
+    self.text = self.text;
+}
 @end
