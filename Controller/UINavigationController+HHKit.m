@@ -1,6 +1,33 @@
 // light@huohua.tv
 #import "UINavigationController+HHKit.h"
 
+@interface NavigationBarButton : UIButton
+@property (assign, nonatomic) BOOL isLeftButton;
+- (id)initWithFrame:(CGRect)frame isLeftButton:(BOOL)isLeftButton;
+@end
+
+@implementation NavigationBarButton
+- (id)initWithFrame:(CGRect)frame isLeftButton:(BOOL)isLeftButton
+{
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.isLeftButton = isLeftButton;
+    }
+    return self;
+}
+
+- (UIEdgeInsets)alignmentRectInsets {
+    UIEdgeInsets insets;
+    if (self.isLeftButton) {
+        insets = UIEdgeInsetsMake(0, 12.0f, 0, 0);
+    } else {
+        insets = UIEdgeInsetsMake(0, 0, 0, 12.0f);
+    }
+    return insets;
+}
+
+@end
+
 @implementation UINavigationController (HHKit)
 
 - (void)customBackgroundWithImage:(UIImage *)image withShadowImage:(UIImage *)shadowImage
@@ -23,11 +50,13 @@
 
 - (void)leftBtnWithImage:(UIImage *)image highlightImage:(UIImage *)highlightImage target:(id)target selector:(SEL)selector
 {
-    UIButton *leftBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    
-    leftBtn.frame = CGRectMake(0, 0, image.size.width, image.size.height);
+    UIButton *leftBtn;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+        leftBtn = [[NavigationBarButton alloc] initWithFrame:CGRectMake(0, 0, image.size.width, image.size.height) isLeftButton:YES];
+    } else {
+        leftBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
+    }
     [leftBtn setImage:image forState:UIControlStateNormal];
-    
     if (highlightImage) {
         [leftBtn setImage:highlightImage forState:UIControlStateHighlighted];
     }
@@ -38,11 +67,13 @@
 
 - (void)rightBtnWithImage:(UIImage *)image highlightImage:(UIImage *)highlightImage target:(id)target selector:(SEL)selector
 {
-    UIButton *rightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    
-    rightBtn.frame = CGRectMake(0, 0, image.size.width, image.size.height);
+    UIButton *rightBtn;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7) {
+        rightBtn = [[NavigationBarButton alloc] initWithFrame:CGRectMake(0, 0, image.size.width, image.size.height) isLeftButton:NO];
+    } else {
+        rightBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, image.size.width, image.size.height)];
+    }
     [rightBtn setImage:image forState:UIControlStateNormal];
-    
     if (highlightImage) {
         [rightBtn setImage:highlightImage forState:UIControlStateHighlighted];
     }
