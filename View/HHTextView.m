@@ -27,6 +27,7 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextViewTextDidChangeNotification object:nil];
+    [super dealloc];
 }
 
 - (void)setFont:(UIFont *)font
@@ -57,9 +58,4 @@
     }
 }
 
-- (void)deleteBackward
-{
-    [super deleteBackward];
-    self.text = self.text;
-}
 @end
