@@ -30,17 +30,13 @@
 
 @implementation UINavigationController (HHKit)
 
-- (void)customBackgroundWithImage:(UIImage *)image withShadowImage:(UIImage *)shadowImage
+- (void)customBackgroundWithImage:(UIImage *)image
 {
     self.navigationBar.frame = CGRectMake(0, self.navigationBar.frame.origin.y, self.navigationBar.frame.size.width, 44);
     
     if ([self.navigationBar respondsToSelector:@selector(setBackgroundImage:forBarMetrics:)]) { // ios5
         [self.navigationBar setBackgroundImage:image forBarMetrics:UIBarMetricsDefault];
     }
-    
-    UIImageView *shadowView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 5)];
-    shadowView.image = shadowImage;
-    [self.visibleViewController.view addSubview:shadowView];
 }
 
 - (void)backBtnWithImage:(UIImage *)image highlightImage:(UIImage *)highlightImage
@@ -82,10 +78,6 @@
     self.visibleViewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:rightBtn];
 }
 
-- (void)pushViewControllerWithBlock:(HHViewControllerBlock)viewController animated:(BOOL)animated {
-    [self pushViewController:viewController() animated:animated];
-}
-
 - (void)popWithAnimated
 {
     if (![self popViewControllerAnimated:YES]) {
@@ -100,12 +92,6 @@
     NSMutableArray *VCs = [self.viewControllers mutableCopy];
     [VCs removeObjectAtIndex:VCs.count - 2];
     [self setViewControllers:VCs animated:animated];
-}
-
-- (BOOL)isRootViewController:(UIViewController *)viewController
-{
-    UIViewController *rootViewController = [self.viewControllers objectAtIndex:0];
-    return [rootViewController isEqual:viewController];
 }
 
 @end
