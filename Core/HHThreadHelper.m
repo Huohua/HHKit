@@ -7,14 +7,14 @@
 {
     dispatch_queue_t    concurrentQueue = dispatch_queue_create("hhkit.core.threadhelper", NULL);
     dispatch_queue_t    mainQueue = dispatch_get_main_queue();
-
+    
     HHBasicBlock    operation = [block copy];
     HHBasicBlock    completion = [completionBlock copy];
-
+    
     if (completion == nil) completion =^{};
-
+    
     if (operation == nil) operation =^{};
-
+    
     if (waitUntilDone) {
         dispatch_sync(concurrentQueue, operation);
         dispatch_sync(mainQueue, ^{
@@ -48,14 +48,20 @@
 
 + (void)performBlockInMainThread:(HHBasicBlock)block afterDelay:(NSTimeInterval)delay
 {
-    [self performBlockInBackground:^{
-        sleep(delay);
-    } completion:block];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        if (block) {
+            block();
+        }
+    });
 }
 
 + (void)performBlockInMainThread:(HHBasicBlock)block
 {
-    [self performBlockInMainThread:block waitUntilDone:NO];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (block) {
+            block();
+        }
+    });
 }
 
 @end
