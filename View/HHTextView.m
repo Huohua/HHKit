@@ -26,8 +26,11 @@
 
 - (void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextViewTextDidChangeNotification object:nil];
+    #if ! __has_feature(objc_arc)
     [super dealloc];
+    #endif
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextViewTextDidChangeNotification object:nil];
 }
 
 - (void)setFont:(UIFont *)font
