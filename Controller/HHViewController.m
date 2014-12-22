@@ -90,7 +90,7 @@
 - (void)presentModalViewControllerWithBlock:(HHViewControllerBlock)viewController animated:(BOOL)animated
 {
     UIViewController *vc = viewController();
-    [self presentModalViewController:vc animated:animated];
+    [self presentViewController:vc animated:animated completion:nil];
 }
 
 @end
