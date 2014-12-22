@@ -9,7 +9,7 @@
 @implementation HHTextView
 - (void)setPlaceholder:(NSString *)placeholder
 {
-    CGSize textSize = [placeholder sizeWithFont:self.font forWidth:self.frame.size.width lineBreakMode:UILineBreakModeClip];
+    CGSize textSize = [placeholder sizeWithFont:self.font forWidth:self.frame.size.width lineBreakMode:NSLineBreakByClipping];
     if (!self.placeholderLabel) {
         self.placeholderLabel = [[UILabel alloc] init];
     }
@@ -27,7 +27,6 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextViewTextDidChangeNotification object:nil];
-    [super dealloc];
 }
 
 - (void)setFont:(UIFont *)font
@@ -36,7 +35,7 @@
     
     if (self.placeholderLabel) {
         self.placeholderLabel.font = font;
-        CGSize textSize = [self.placeholderLabel.text sizeWithFont:self.font forWidth:self.frame.size.width lineBreakMode:UILineBreakModeClip];
+        CGSize textSize = [self.placeholderLabel.text sizeWithFont:self.font forWidth:self.frame.size.width lineBreakMode:NSLineBreakByClipping];
         self.placeholderLabel.frame = CGRectMake(8, 8, textSize.width, textSize.height);
     }
 }
