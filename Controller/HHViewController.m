@@ -62,7 +62,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    [super viewDidDisappear:animated];
+    [super viewWillDisappear:animated];
     
     if ([self respondsToSelector:@selector(hooksAfterViewWillDisappear)]) {
         for (NSString *selString in [self hooksAfterViewWillDisappear]) {
