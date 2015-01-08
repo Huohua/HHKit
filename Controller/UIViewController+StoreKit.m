@@ -9,11 +9,11 @@
         skvc.delegate = self;
         [skvc loadProductWithParameters:@{SKStoreProductParameterITunesItemIdentifier:itemId} completionBlock:^(BOOL result, NSError *error){
             if (!result || error) {
-                [skvc dismissModalViewControllerAnimated:YES];
+                [skvc dismissViewControllerAnimated:YES completion:nil];
                 [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=%@&mt=8", itemId]]];
             }
         }];
-        [self presentModalViewController:skvc animated:YES];
+        [self presentViewController:skvc animated:YES completion:nil];
     } else {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"itms-apps://itunes.apple.com/WebObjects/MZStore.woa/wa/viewSoftware?id=%@&mt=8", itemId]]];
     }
@@ -21,7 +21,7 @@
 
 - (void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController
 {
-    [viewController dismissModalViewControllerAnimated:YES];
+    [viewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

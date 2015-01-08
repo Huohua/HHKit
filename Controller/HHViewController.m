@@ -62,7 +62,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    [super viewDidDisappear:animated];
+    [super viewWillDisappear:animated];
     
     if ([self respondsToSelector:@selector(hooksAfterViewWillDisappear)]) {
         for (NSString *selString in [self hooksAfterViewWillDisappear]) {
@@ -90,7 +90,7 @@
 - (void)presentModalViewControllerWithBlock:(HHViewControllerBlock)viewController animated:(BOOL)animated
 {
     UIViewController *vc = viewController();
-    [self presentModalViewController:vc animated:animated];
+    [self presentViewController:vc animated:animated completion:nil];
 }
 
 @end

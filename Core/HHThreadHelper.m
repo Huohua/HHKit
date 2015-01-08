@@ -28,7 +28,6 @@
             });
         });
     }
-	dispatch_release(concurrentQueue);
 }
 
 + (void)performBlockInBackground:(HHBasicBlock)block completion:(HHBasicBlock)completionBlock
