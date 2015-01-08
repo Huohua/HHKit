@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   s.summary               = "HHKit"
   s.homepage              = "https://github.com/Huohua/HHKit/"
   s.license               = 'MIT'
-  s.author                = { "刘白光" => "light@huohua.in" }
+  s.author                = { "George Shen" => "georgeshen@huohua.in" }
   s.platform              = :ios
   s.ios.deployment_target = '6.0'
   s.source                = { :git => "https://github.com/Huohua/HHKit.git", :tag => s.version }
