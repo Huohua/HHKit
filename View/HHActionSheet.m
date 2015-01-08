@@ -33,6 +33,10 @@
 
 - (NSInteger)addButtonWithTitle:(NSString *)title block:(HHBasicBlock)block
 {
+    if (!block) {
+        block = ^{};
+    }
+    
     [self.blocks addObject:[block copy]];
     return [super addButtonWithTitle:title];
 }
@@ -58,7 +62,7 @@
 
 - (void)actionSheet:(HHActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    HHBasicBlock block = [self.blocks objectAtIndex:buttonIndex];
+    HHBasicBlock block = self.blocks[buttonIndex];
 
     block();
 }
