@@ -9,17 +9,10 @@
 @implementation HHTextView
 - (void)setPlaceholder:(NSString *)placeholder
 {
-    CGSize textSize = [placeholder sizeWithFont:self.font forWidth:self.frame.size.width lineBreakMode:NSLineBreakByClipping];
-    if (!self.placeholderLabel) {
-        self.placeholderLabel = [[UILabel alloc] init];
-    }
-    self.placeholderLabel.font = self.font;
     self.placeholderLabel.text = placeholder;
-    self.placeholderLabel.textColor = [UIColor colorWithWhite:0.7f alpha:1];
-    self.placeholderLabel.backgroundColor = [UIColor clearColor];
+    CGSize textSize = [self.placeholderLabel.text boundingRectWithSize:CGSizeMake(self.frame.size.width, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName : self.placeholderLabel.font} context:nil].size;
     self.placeholderLabel.frame = CGRectMake(8, 8, textSize.width, textSize.height);
     [self addSubview:self.placeholderLabel];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textViewDidChange:) name:UITextViewTextDidChangeNotification object:nil];
 }
 
@@ -32,11 +25,9 @@
 {
     [super setFont:font];
     
-    if (self.placeholderLabel) {
-        self.placeholderLabel.font = font;
-        CGSize textSize = [self.placeholderLabel.text sizeWithFont:self.font forWidth:self.frame.size.width lineBreakMode:NSLineBreakByClipping];
-        self.placeholderLabel.frame = CGRectMake(8, 8, textSize.width, textSize.height);
-    }
+    self.placeholderLabel.font = font;
+    CGSize textSize = [self.placeholderLabel.text boundingRectWithSize:CGSizeMake(self.frame.size.width, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName : self.placeholderLabel.font} context:nil].size;
+    self.placeholderLabel.frame = CGRectMake(8, 8, textSize.width, textSize.height);
 }
 
 - (void)setText:(NSString *)text
@@ -54,6 +45,19 @@
     } else {
         self.placeholderLabel.textColor = [UIColor clearColor];
     }
+}
+
+#pragma mark - Property
+- (UILabel *)placeholderLabel
+{
+    if (!_placeholderLabel) {
+        _placeholderLabel = [[UILabel alloc] init];
+        _placeholderLabel.textColor = [UIColor colorWithWhite:0.7f alpha:1];
+        _placeholderLabel.backgroundColor = [UIColor clearColor];
+        _placeholderLabel.font = self.font;
+    }
+    
+    return _placeholderLabel;
 }
 
 @end
