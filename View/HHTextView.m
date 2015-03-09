@@ -15,8 +15,7 @@
     }
     self.placeholderLabel.font = self.font;
     self.placeholderLabel.text = placeholder;
-    self.placeholderLabel.textColor = [UIColor grayColor];
-    self.placeholderLabel.alpha = 0.7f;
+    self.placeholderLabel.textColor = [UIColor colorWithWhite:0.7f alpha:1];
     self.placeholderLabel.backgroundColor = [UIColor clearColor];
     self.placeholderLabel.frame = CGRectMake(8, 8, textSize.width, textSize.height);
     [self addSubview:self.placeholderLabel];

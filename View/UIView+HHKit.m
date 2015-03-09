@@ -74,7 +74,7 @@
 }
 
 
-#pragma mark - Alpa
+#pragma mark - Alpha
 - (void)show
 {
     self.alpha = 1;
