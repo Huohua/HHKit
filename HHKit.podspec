@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                  = "HHKit"
-  s.version               = "0.1.5"
+  s.version               = "0.1.6"
   s.summary               = "HHKit"
   s.homepage              = "https://github.com/Huohua/HHKit/"
   s.license               = 'MIT'
