@@ -6,7 +6,7 @@
 
 - (void)autoResize:(CGSize)maxSize
 {
-    CGSize size = [self.text sizeWithFont:self.font constrainedToSize:maxSize lineBreakMode:self.lineBreakMode];
+    CGSize size = [self.text boundingRectWithSize:maxSize options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName : self.font} context:nil].size;
     self.frame = CGRectMake(self.offsetX, self.offsetY, size.width, size.height);
 }
 
