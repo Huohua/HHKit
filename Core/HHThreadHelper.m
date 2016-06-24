@@ -5,7 +5,7 @@
 
 + (void)performBlockInBackground:(HHBasicBlock)block completion:(HHBasicBlock)completionBlock waitUntilDone:(BOOL)waitUntilDone
 {
-    dispatch_queue_t    concurrentQueue = dispatch_queue_create("hhkit.core.threadhelper", NULL);
+    dispatch_queue_t    concurrentQueue = dispatch_queue_create("hhkit.core.threadhelper", DISPATCH_QUEUE_CONCURRENT);
     dispatch_queue_t    mainQueue = dispatch_get_main_queue();
     
     HHBasicBlock    operation = [block copy];
